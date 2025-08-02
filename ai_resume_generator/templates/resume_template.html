@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} - Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .contact {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-top: 25px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            border-bottom: 2px solid #1d4ed8;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .work-entry, .edu-entry {
+            margin-bottom: 15px;
+        }
+        .italic {
+            font-style: italic;
+        }
+        .date-right {
+            float: right;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <div class="contact">
+        {{ email }} &nbsp;&nbsp; {{ phone }} &nbsp;&nbsp; {{ address }}
+    </div>
+
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <p>{{ summary }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Skills</div>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill.name }} — {{ skill.level }}%</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Work Experience</div>
+        {% for exp in experience %}
+        <div class="work-entry">
+            <p><strong>{{ exp.job_title }}</strong> <span class="date-right">{{ exp.start }} - {{ exp.end }}</span></p>
+            <p class="italic">{{ exp.company }}</p>
+            {% if exp.details %}
+            <ul>
+                {% for detail in exp.details %}
+                <li>{{ detail }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <div class="section-title">Education</div>
+        {% for edu in education %}
+        <div class="edu-entry">
+            <p><strong>{{ edu.degree }}</strong> <span class="date-right">{{ edu.start }} - {{ edu.end }}</span></p>
+            <p class="italic">{{ edu.institution }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
