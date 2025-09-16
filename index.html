@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>AI Resume & Cover Letter Generator</h1>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="text" name="job_role" placeholder="Job Role" required><br>
+        <textarea name="skills" placeholder="Skills (comma-separated)" required></textarea><br>
+        <textarea name="experience" placeholder="Work Experience" required></textarea><br>
+        <textarea name="education" placeholder="Education" required></textarea><br>
+        <textarea name="goals" placeholder="Career Goals" required></textarea><br>
+        <input type="text" name="company" placeholder="Company (optional)"><br>
+        <textarea name="job_description" placeholder="Job Description (optional)"></textarea><br>
+        <button type="submit">Generate</button>
+    </form>
+</body>
+</html>
