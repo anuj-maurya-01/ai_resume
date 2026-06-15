@@ -35,8 +35,14 @@
       <div class="header-actions">
         <div class="autosave-status saved" id="autosaveStatus">
           <span class="autosave-dot"></span>
-          <span id="autosaveText">Saved to cloud</span>
+          <span id="autosaveText">Saved locally</span>
         </div>
+        <button id="settingsBtn" class="btn-secondary" style="padding: 10px; display: flex; align-items: center; justify-content: center;" title="API Settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
         <button id="exportPdfBtn" class="btn-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -217,7 +223,7 @@
           <!-- Panel 3: AI Assistant Panel -->
           <div class="panel-content" id="panelAI">
             <h2 class="panel-title">AI Content Assistant</h2>
-            <p class="panel-desc">Get quick recommendations for your resume depending on your Target Job Title.</p>
+            <p class="panel-desc">Generate tailored content with Gemini AI or select a domain for offline suggestions.</p>
             
             <div class="form-group">
               <label for="aiJobSelect">Select Job Domain</label>
@@ -230,15 +236,46 @@
                 <option value="customer">Customer Success / Support</option>
               </select>
             </div>
+
+            <!-- Live AI Actions -->
+            <div class="ai-live-actions" style="margin-bottom: 24px; background-color: #1e293b; padding: 14px; border-radius: 12px; border: 1px solid var(--dark-border);">
+              <span class="ai-pill" style="margin-bottom: 8px;">Gemini Live AI</span>
+              <p style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 12px; line-height: 1.4;">
+                Generate customized resume sections or a full cover letter. (Requires API Key in Settings)
+              </p>
+              <button type="button" id="btnAiSummary" class="btn-primary" style="width: 100%; margin-bottom: 8px; justify-content: center; gap: 8px; font-size: 0.8rem; padding: 8px 12px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9"></path>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+                Write Tailored Summary
+              </button>
+              <button type="button" id="btnAiCoverLetter" class="btn-primary" style="width: 100%; margin-bottom: 8px; justify-content: center; gap: 8px; font-size: 0.8rem; padding: 8px 12px; background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Generate Cover Letter
+              </button>
+              <button type="button" id="btnAiEnhanceExperience" class="btn-secondary" style="width: 100%; justify-content: center; gap: 8px; font-size: 0.8rem; padding: 8px 12px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                STAR Method Experience Tailor
+              </button>
+            </div>
+
             <!-- Suggestion Areas -->
             <div class="ai-suggest-box">
-              <span class="ai-pill">AI Suggested Summaries</span>
+              <span class="ai-pill">Offline Sample Summaries</span>
               <div id="aiSummarySuggestions">
                 <!-- JS populated summaries -->
               </div>
             </div>
             <div class="ai-suggest-box" style="margin-top: 20px;">
-              <span class="ai-pill">AI Suggested Experience Bullets</span>
+              <span class="ai-pill">Offline Sample Bullet Points</span>
               <div id="aiExperienceSuggestions">
                 <!-- JS populated bullet items -->
               </div>
@@ -260,6 +297,15 @@
               <h3 style="color: white; margin-bottom: 6px;" id="atsStatusLabel">Needs Information</h3>
               <p style="font-size: 0.8rem; color: #94a3b8;" id="atsMessageLabel">Paste a Job Description in Content Tab & write summary/skills to get dynamic compatibility scores.</p>
             </div>
+            
+            <button type="button" id="btnAiAtsScan" class="btn-primary" style="width: 100%; margin-bottom: 24px; justify-content: center; gap: 8px; font-size: 0.8rem; padding: 8px 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              AI Deep Match Analysis
+            </button>
+            
             <h3 class="form-section-title" style="margin-bottom: 12px;">ATS Recommendations</h3>
             <div class="ats-feedback-list" id="atsFeedbackList">
               <div class="ats-feedback-item missing">
@@ -334,6 +380,29 @@
       </section>
     </main>
   </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" style="font-family: var(--font-title); font-weight: 700; color: white; margin: 0;">API Configuration</h3>
+        <button id="closeSettingsBtn" class="modal-close" style="background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; line-height: 1;">&times;</button>
+      </div>
+      <div class="modal-body" style="padding-top: 16px; padding-bottom: 16px;">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="inputApiKey" style="display: block; font-size: 0.8rem; font-weight: 500; color: #94a3b8; margin-bottom: 6px;">Gemini API Key</label>
+          <input type="password" id="inputApiKey" class="form-input" placeholder="Enter Gemini API key (AIzaSy...)">
+          <p class="help-text" style="font-size: 0.75rem; color: #64748b; margin-top: 8px; line-height: 1.4;">
+            Your API key is saved locally in your browser's <code>localStorage</code> and is sent directly to Google Gemini API servers.
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 8px;">
+        <button id="saveSettingsBtn" class="btn-primary" style="width: 100%; justify-content: center;">Save Key</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Main logic scripts -->
   <script src="app.js"></script>
 </body>
