@@ -1,0 +1,38 @@
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor and IDE Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*~
+
+# Package / Dependency Managers (if added later)
+node_modules/
+jspm_packages/
+web_modules/
+.npm/
+.eslintcache
+*.log
+package-lock.json
+yarn.lock
+
+# AI Assistant Artifacts
+.gemini/
+.antigravity/
+scratch/
+implementation_plan.md
+walkthrough.md
+task.md
+transcript*.jsonl
